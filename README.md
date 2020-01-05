@@ -1,5 +1,5 @@
 ![Bounded Context](./doc/bounded-context.png)
-# Demo DDD Account Kotlin
+# Demo Project DDD Account Kotlin
 
 > Exemplo de um projeto de ***estudo*** REST API utilizando DDD com Kotlin e Spring,   
 > Fique a vontade para opinar e enviar Pull Request,   
