@@ -1,9 +1,7 @@
 package com.example.demo.boundaries.account.presentation
 
-import com.example.demo.boundaries.account.domain.AccountRequest
 import com.example.demo.boundaries.account.domain.AccountService
 import com.example.demo.boundaries.account.domain.AccountVO
-import com.example.demo.boundaries.account.domain.MovementRequest
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 

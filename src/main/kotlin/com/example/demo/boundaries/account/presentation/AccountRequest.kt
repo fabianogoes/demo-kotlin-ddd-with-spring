@@ -1,4 +1,4 @@
-package com.example.demo.boundaries.account.domain
+package com.example.demo.boundaries.account.presentation
 
 import java.math.BigDecimal
 

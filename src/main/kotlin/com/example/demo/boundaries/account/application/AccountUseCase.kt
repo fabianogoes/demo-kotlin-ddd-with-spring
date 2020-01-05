@@ -1,10 +1,12 @@
 package com.example.demo.boundaries.account.application
 
 import com.example.demo.boundaries.account.domain.*
+import com.example.demo.boundaries.account.presentation.AccountRequest
+import com.example.demo.boundaries.account.presentation.MovementRequest
 import org.springframework.stereotype.Service
 
 @Service
-class AccountUserCase(private val repository: AccountRepository) : AccountService {
+class AccountUseCase(private val repository: AccountRepository) : AccountService {
 
     override fun createNewAccount(request: AccountRequest): AccountVO {
         return Account(request.person, request.amount).createNewAccount(repository)
