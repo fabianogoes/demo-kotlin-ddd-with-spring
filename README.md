@@ -1,9 +1,9 @@
 ![Bounded Context](./doc/bounded-context.png)
 # Demo Project DDD Account Kotlin
 
-> Exemplo de um projeto de ***estudo*** REST API utilizando DDD com Kotlin e Spring,   
+> Exemplo de um projeto de ***estudo*** de uma REST API utilizando DDD com Kotlin e Spring,   
 > Fique a vontade para opinar e enviar Pull Request,   
-> Assim podemos juntos evoluir o example e deixar disponivel para a cominidade.
+> Assim podemos juntos evoluir o exemplo e deixar disponivel para a comunidade.
 
 **Stack:**   
 
@@ -11,7 +11,9 @@
 - Spring Web
 - Spring Actuator
 - Spring Data
+- H2 Database
 - Java 8
+- Gradle
 
 ### Domain: Bank Account
 --------------------
