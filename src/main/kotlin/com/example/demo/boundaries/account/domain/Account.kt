@@ -4,7 +4,6 @@ import java.math.BigDecimal
 
 class Account() {
 
-    private val accountNumbers = 0
     lateinit var personName: String
     lateinit var amount: BigDecimal
     lateinit var number: String
@@ -13,7 +12,6 @@ class Account() {
     constructor(personName: String, amount: BigDecimal) : this() {
         this.personName = personName
         this.amount = amount
-        this.number = generateNewAccountNumber()
         this.validator = AccountValidator(this)
     }
 
@@ -29,15 +27,16 @@ class Account() {
         CREDIT, DEBIT
     }
 
-    fun createNewAccount(repository: AccountRepository): AccountVO {
+    fun createNewAccount(repository: AccountRepositoryPort): AccountVO {
         this.isNewAccountValid()
+        this.number = this.generateNewAccountNumber(repository)
         val accountVo = toAccountVo(this)
         repository.persisNewAccount(accountVo)
         accountVo.movements = repository.retrieveAllMovements(this.number)
         return accountVo
     }
 
-    fun createNewMovementOfCreditAndUpdateAmountOfAccount(repository: AccountRepository, movementValue: BigDecimal) {
+    fun createNewMovementOfCreditAndUpdateAmountOfAccount(repository: AccountRepositoryPort, movementValue: BigDecimal) {
         isNewMovementOfCreditValid(movementValue)
         this.updateCreditAmountOfAccount(movementValue)
 
@@ -47,7 +46,7 @@ class Account() {
         repository.persistNewMovementAndUpdateAmount(accountVO, movementVO)
     }
 
-    fun createNewMovementOfDebitAndUpdateAmountOfAccount(repository: AccountRepository, movementValue: BigDecimal) {
+    fun createNewMovementOfDebitAndUpdateAmountOfAccount(repository: AccountRepositoryPort, movementValue: BigDecimal) {
         isNewMovementOfDebitValid(movementValue)
         updateDebitAmountOfAccount(movementValue)
 
@@ -80,7 +79,12 @@ class Account() {
     }
 
     private fun toAccountVo(account: Account): AccountVO {
-        return AccountVO(personName = account.personName, number = account.number, amount = account.amount, movements = mutableListOf())
+        return AccountVO(
+                personName = account.personName,
+                number = account.number,
+                amount = account.amount,
+                movements = mutableListOf()
+        )
     }
 
     private fun toMovementOfDebit(movementValue: BigDecimal): MovementVO {
@@ -91,8 +95,8 @@ class Account() {
         return MovementVO(movementValue, MovementType.CREDIT.name)
     }
 
-    private fun generateNewAccountNumber(): String {
-        val nextNumber: Int = this.accountNumbers + 1
+    private fun generateNewAccountNumber(repository: AccountRepositoryPort): String {
+        val nextNumber: Int = repository.generateNextAccountNumber()
         val lengthNumber = 10
         return String.format("%1$" + lengthNumber + "s", nextNumber).replace(' ', '0')
     }

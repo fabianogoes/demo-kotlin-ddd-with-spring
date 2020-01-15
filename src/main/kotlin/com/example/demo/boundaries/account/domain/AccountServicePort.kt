@@ -3,7 +3,7 @@ package com.example.demo.boundaries.account.domain
 import com.example.demo.boundaries.account.presentation.AccountRequest
 import com.example.demo.boundaries.account.presentation.MovementRequest
 
-interface AccountService {
+interface AccountServicePort {
 
     fun createNewAccount(request: AccountRequest): AccountVO
     fun createNewMovementOfCredit(accountNumber: String, request: MovementRequest): AccountVO

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "36d0d452-a9ca-4531-afc3-9a4ea9613a59",
+		"_postman_id": "b54de1d9-8c8e-4bd3-8f39-7f6934c6c81d",
 		"name": "demo-ddd-account",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"person\": \"Davi Branco\",\n\t\"amount\": 1.00\n}",
+					"raw": "{\n\t\"person\": \"Fabiano\",\n\t\"amount\": 1.00\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -62,7 +62,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/accounts/0000000002/movement/credit",
+					"raw": "http://localhost:8080/accounts/0000000001/movement/credit",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -70,7 +70,7 @@
 					"port": "8080",
 					"path": [
 						"accounts",
-						"0000000002",
+						"0000000001",
 						"movement",
 						"credit"
 					]
@@ -92,7 +92,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " {\n    \"movementValue\": 100.00\n }",
+					"raw": " {\n    \"movementValue\": 10.00\n }",
 					"options": {
 						"raw": {
 							"language": "json"

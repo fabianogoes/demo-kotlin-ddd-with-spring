@@ -1,13 +1,13 @@
 package com.example.demo.boundaries.account.presentation
 
-import com.example.demo.boundaries.account.domain.AccountService
+import com.example.demo.boundaries.account.domain.AccountServicePort
 import com.example.demo.boundaries.account.domain.AccountVO
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/accounts")
-class AccountResource(private val service: AccountService) {
+class AccountResource(private val service: AccountServicePort) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

@@ -1,12 +1,12 @@
 package com.example.demo.boundaries.account.infrastructure
 
-import com.example.demo.boundaries.account.domain.AccountRepository
+import com.example.demo.boundaries.account.domain.AccountRepositoryPort
 import com.example.demo.boundaries.account.domain.AccountVO
 import com.example.demo.boundaries.account.domain.MovementVO
 import org.springframework.stereotype.Repository
 
 @Repository
-internal class AccountRepositoryHibernate(val repositoryJpa: AccountRepositoryJpa) : AccountRepository {
+internal class AccountRepositoryHibernateAdapter(val repositoryJpa: AccountRepositoryJpa) : AccountRepositoryPort {
 
     override fun persisNewAccount(accountVo: AccountVO) {
         val account: Account? = this.toNewAccount(accountVo)
@@ -36,6 +36,13 @@ internal class AccountRepositoryHibernate(val repositoryJpa: AccountRepositoryJp
 
     override fun retrieveAllAccount(): List<AccountVO> {
         return repositoryJpa.findAll().map { this.toAccountVO(it) }
+    }
+
+    override fun generateNextAccountNumber(): Int {
+        return repositoryJpa.findAll()
+                .ifEmpty { return 1 }
+                .maxBy { it.number.toInt() }
+                ?.number!!.toInt() + 1
     }
 
     fun mapperToNewMovement(movementVO: MovementVO, account: Account): Movement {

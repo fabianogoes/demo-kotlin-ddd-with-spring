@@ -15,8 +15,28 @@
 - Java 8
 - Gradle
 
+### Build Local
+---------------
+
+**Build by Gradle**
+
+```
+./gradlew clean build
+```
+
+**Running by Jar**
+
+```
+java -jar build/libs/demo-ddd-account-kotlin*.jar
+```
+
+**Test by Postman**
+
+> To use the Postman Collection: `doc\postman_collection.json`
+
+
 ### Domain: Bank Account
---------------------
+------------------------
 
 **Use Cases:**   
 
@@ -24,6 +44,7 @@
 - Create New Movement of Credit (Depósito)
 - Create New Movement of Debit (Saque)
 - Retrieve Account by Number (Extrato)
+- Retrieve All Accounts
 
 ### Project Structure
 ---------------------
