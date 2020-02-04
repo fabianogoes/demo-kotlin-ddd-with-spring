@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/accounts")
-class AccountResource(private val service: AccountServicePort) {
+class AccountController(private val service: AccountServicePort) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

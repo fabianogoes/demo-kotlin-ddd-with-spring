@@ -32,9 +32,19 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.h2database:h2")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.mockk:mockk:1.9.3")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+    testImplementation("org.mockito:mockito-core:2.21.0")
+    testImplementation("org.junit.platform:junit-platform-runner:1.2.0")
+    testImplementation("org.junit.vintage:junit-vintage-engine:5.2.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:2.23.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
+    testImplementation("com.tngtech.archunit:archunit:0.13.1")
+    testImplementation("com.tngtech.archunit:archunit-junit4:0.12.0")
 }
 
 tasks.withType<Test> {

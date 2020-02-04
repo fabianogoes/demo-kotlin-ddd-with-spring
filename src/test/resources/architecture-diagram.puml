@@ -1,0 +1,11 @@
+' Preview with https://plantuml-editor.kkeisuke.com/
+@startuml
+[Controller] <<com.example.demo.boundaries.account.presentation..>>
+[Use Case] <<com.example.demo.boundaries.account.application..>>
+[Domain] <<com.example.demo.boundaries.account.domain..>>
+[Infra] <<com.example.demo.boundaries.account.infrastructure..>>
+
+[Controller] --> [Use Case]
+[Use Case] --> [Domain]
+[Infra] --> [Domain]
+@enduml

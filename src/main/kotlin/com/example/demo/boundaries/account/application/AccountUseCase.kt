@@ -6,7 +6,7 @@ import com.example.demo.boundaries.account.presentation.MovementRequest
 import org.springframework.stereotype.Service
 
 @Service
-class AccountUseCaseAdapter(private val repository: AccountRepositoryPort) : AccountServicePort {
+class AccountUseCase(private val repository: AccountRepositoryPort) : AccountServicePort {
 
     override fun createNewAccount(request: AccountRequest): AccountVO {
         return Account(request.person, request.amount).createNewAccount(repository)
