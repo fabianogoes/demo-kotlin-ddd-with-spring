@@ -1,12 +1,11 @@
 package com.example.demo.boundaries.account.infrastructure
 
-import com.example.demo.boundaries.account.domain.AccountRepositoryPort
 import com.example.demo.boundaries.account.domain.AccountVO
 import com.example.demo.boundaries.account.domain.MovementVO
 import org.springframework.stereotype.Repository
 
 @Repository
-internal class AccountRepositoryHibernateAdapter(val repositoryJpa: AccountRepositoryJpa) : AccountRepositoryPort {
+internal class AccountRepositoryHibernateAdapter(val repositoryJpa: AccountRepositoryJpa) : AccountRepository {
 
     override fun persisNewAccount(accountVo: AccountVO) {
         val account: Account? = this.toNewAccount(accountVo)

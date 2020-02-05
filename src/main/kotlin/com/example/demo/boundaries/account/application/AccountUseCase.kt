@@ -1,34 +1,15 @@
 package com.example.demo.boundaries.account.application
 
-import com.example.demo.boundaries.account.domain.*
-import com.example.demo.boundaries.account.presentation.AccountRequest
-import com.example.demo.boundaries.account.presentation.MovementRequest
-import org.springframework.stereotype.Service
+import com.example.demo.boundaries.account.domain.AccountVO
+import com.example.demo.boundaries.account.presentation.AccountApiRequest
+import com.example.demo.boundaries.account.presentation.MovementApiRequest
 
-@Service
-class AccountUseCase(private val repository: AccountRepositoryPort) : AccountServicePort {
+interface AccountUseCase {
 
-    override fun createNewAccount(request: AccountRequest): AccountVO {
-        return Account(request.person, request.amount).createNewAccount(repository)
-    }
+    fun createNewAccount(request: AccountApiRequest): AccountVO
+    fun createNewMovementOfCredit(accountNumber: String, request: MovementApiRequest): AccountVO
+    fun createNewMovementOfDebit(accountNumber: String, request: MovementApiRequest): AccountVO
+    fun retrieveAccountByNumber(accountNumber: String): AccountVO
+    fun retrieveAllAccount(): List<AccountVO>
 
-    override fun createNewMovementOfCredit(accountNumber: String, request: MovementRequest): AccountVO {
-        val accountVO = repository.retrieveAccountByNumber(accountNumber)
-        Account(accountVO).createNewMovementOfCreditAndUpdateAmountOfAccount(repository, request.movementValue)
-        return repository.retrieveAccountByNumber(accountNumber)
-    }
-
-    override fun createNewMovementOfDebit(accountNumber: String, request: MovementRequest): AccountVO {
-        val accountVO = repository.retrieveAccountByNumber(accountNumber)
-        Account(accountVO).createNewMovementOfDebitAndUpdateAmountOfAccount(repository, request.movementValue)
-        return repository.retrieveAccountByNumber(accountNumber)
-    }
-
-    override fun retrieveAccountByNumber(accountNumber: String): AccountVO {
-        return repository.retrieveAccountByNumber(accountNumber)
-    }
-
-    override fun retrieveAllAccount(): List<AccountVO> {
-        return repository.retrieveAllAccount()
-    }
 }
