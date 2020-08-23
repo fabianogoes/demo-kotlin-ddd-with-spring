@@ -1,5 +1,6 @@
-package com.example.demo.boundaries.account.domain
+package com.example.demo.boundaries.account.domain.validator
 
+import com.example.demo.boundaries.account.domain.Account
 import org.springframework.util.Assert
 import java.math.BigDecimal
 

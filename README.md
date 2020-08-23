@@ -51,14 +51,7 @@ java -jar build/libs/demo-ddd-account-kotlin*.jar
 ### Project Structure
 ---------------------
 
-**Folders:**   
-
-![Folders](./doc/structure-folders.png)
-
-**Files:**   
-
-![Files](./doc/structure-files.png)
-
+![Project Structure](./doc/structure-packages.png)
 
 ### Architecture
 ---------------- 

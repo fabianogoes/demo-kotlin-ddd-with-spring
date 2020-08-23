@@ -1,8 +1,8 @@
-package com.example.demo.boundaries.account.domain
+package com.example.demo.boundaries.account.domain.vo
 
 import java.math.BigDecimal
 
-class AccountVO(
+data class AccountVO(
         val personName: String,
         val number: String,
         val amount: BigDecimal,
