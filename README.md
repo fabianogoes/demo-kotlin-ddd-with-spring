@@ -39,14 +39,14 @@ java -jar build/libs/demo-ddd-account-kotlin*.jar
 > To use the Postman Collection: `doc\postman_collection.json`
 
 
-### Domain: Bank Account
+### Domain: Bank
 ------------------------
 
 **Use Cases:**   
 
 - Create New Account
-- Create New Movement of Credit (Depósito)
-- Create New Movement of Debit (Saque)
+- Create New Activity of Credit (Depósito)
+- Create New Activity of Debit (Saque)
 - Retrieve Account by Number (Extrato)
 - Retrieve All Accounts
 
@@ -72,7 +72,7 @@ java -jar build/libs/demo-ddd-account-kotlin*.jar
 
 The objective of this project is to apply the DDD study using the **Kotlin** as programming language and 
 the Web **Spring** as Web Framework.   
-By building a REST API exploring the domain of a **Bank Account**.   
+By building a REST API exploring the domain of a **Bank**.   
 The project is as a public so that they can help evolve the idea and share it with the community.  
 
 ![Open Source / MIT](./doc/opensource-mitlicense.png) 
