@@ -1,9 +1,9 @@
 ![Bounded Context](./doc/bounded-context.png)
 # Demo Project DDD Account Kotlin
 
-> Exemplo de um projeto de ***estudo*** de uma REST API utilizando DDD com Kotlin e Spring,   
-> Fique a vontade para opinar e enviar Pull Request,   
-> Assim podemos juntos evoluir o exemplo e deixar disponivel para a comunidade.
+> Example of a **study** project of a REST API using DDD with Kotlin and Spring,
+> Feel free to give your opinion and send a Pull Request,
+> So we can evolve the example together and make it available to the community.
 
 **Stack:**   
 
@@ -14,6 +14,8 @@
 - H2 Database
 - Java 8
 - Gradle
+
+See more in [Wiki page](https://github.com/fabianogoes/demo-ddd-kotlin-spring/wiki)
 
 ### Build Local
 ---------------
@@ -73,9 +75,10 @@ java -jar build/libs/demo-ddd-account-kotlin*.jar
 ### Open Source Project 
 -----------------------
 
-O objetivo deste projeto é aplicar o estudo do DDD usando a linguagem de programação **Kotlin** e o framework Web **Spring**.   
-Através da construção de uma API REST explorando o dominio de uma **Conta Bancária**.   
-O projeto está como publico para que consigam ajudar evoluindo a ideia e compartilhando com a comunidade.   
+The objective of this project is to apply the DDD study using the **Kotlin** as programming language and 
+the Web **Spring** as Web Framework.   
+By building a REST API exploring the domain of a **Bank Account**.   
+The project is as a public so that they can help evolve the idea and share it with the community.  
 
 ![Open Source / MIT](./doc/opensource-mitlicense.png) 
 
