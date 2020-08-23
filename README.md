@@ -17,6 +17,7 @@
 
 See more in [Wiki page](https://github.com/fabianogoes/demo-ddd-kotlin-spring/wiki)
 
+![Java CI with Gradle](https://github.com/fabianogoes/demo-ddd-kotlin-spring/workflows/Java%20CI%20with%20Gradle/badge.svg)
 ![Gradle Package](https://github.com/fabianogoes/demo-ddd-kotlin-spring/workflows/Gradle%20Package/badge.svg)
 
 ### Build Local
