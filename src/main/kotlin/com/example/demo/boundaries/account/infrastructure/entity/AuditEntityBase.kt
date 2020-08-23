@@ -1,4 +1,4 @@
-package com.example.demo.boundaries.account.infrastructure
+package com.example.demo.boundaries.account.infrastructure.entity
 
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
@@ -9,7 +9,7 @@ import javax.persistence.*
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
-abstract class AuditBase(
+abstract class AuditEntityBase(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,
         @CreatedDate

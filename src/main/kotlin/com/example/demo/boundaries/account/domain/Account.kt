@@ -1,6 +1,9 @@
 package com.example.demo.boundaries.account.domain
 
-import com.example.demo.boundaries.account.infrastructure.AccountRepository
+import com.example.demo.boundaries.account.domain.persistence.AccountPersistencePort
+import com.example.demo.boundaries.account.domain.validator.AccountValidator
+import com.example.demo.boundaries.account.domain.vo.AccountVO
+import com.example.demo.boundaries.account.domain.vo.MovementVO
 import java.math.BigDecimal
 
 class Account() {
@@ -28,7 +31,7 @@ class Account() {
         CREDIT, DEBIT
     }
 
-    fun createNewAccount(repository: AccountRepository): AccountVO {
+    fun createNewAccount(repository: AccountPersistencePort): AccountVO {
         this.isNewAccountValid()
         this.number = this.generateNewAccountNumber(repository)
         val accountVo = toAccountVo(this)
@@ -37,7 +40,7 @@ class Account() {
         return accountVo
     }
 
-    fun createNewMovementOfCreditAndUpdateAmountOfAccount(repository: AccountRepository, movementValue: BigDecimal) {
+    fun createNewMovementOfCreditAndUpdateAmountOfAccount(repository: AccountPersistencePort, movementValue: BigDecimal) {
         isNewMovementOfCreditValid(movementValue)
         this.updateCreditAmountOfAccount(movementValue)
 
@@ -47,7 +50,7 @@ class Account() {
         repository.persistNewMovementAndUpdateAmount(accountVO, movementVO)
     }
 
-    fun createNewMovementOfDebitAndUpdateAmountOfAccount(repository: AccountRepository, movementValue: BigDecimal) {
+    fun createNewMovementOfDebitAndUpdateAmountOfAccount(repository: AccountPersistencePort, movementValue: BigDecimal) {
         isNewMovementOfDebitValid(movementValue)
         updateDebitAmountOfAccount(movementValue)
 
@@ -96,7 +99,7 @@ class Account() {
         return MovementVO(movementValue, MovementType.CREDIT.name)
     }
 
-    private fun generateNewAccountNumber(repository: AccountRepository): String {
+    private fun generateNewAccountNumber(repository: AccountPersistencePort): String {
         val nextNumber: Int = repository.generateNextAccountNumber()
         val lengthNumber = 10
         return String.format("%1$" + lengthNumber + "s", nextNumber).replace(' ', '0')

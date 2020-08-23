@@ -1,9 +1,9 @@
-package com.example.demo.boundaries.account.infrastructure
+package com.example.demo.boundaries.account.domain.persistence
 
-import com.example.demo.boundaries.account.domain.AccountVO
-import com.example.demo.boundaries.account.domain.MovementVO
+import com.example.demo.boundaries.account.domain.vo.AccountVO
+import com.example.demo.boundaries.account.domain.vo.MovementVO
 
-interface AccountRepository {
+interface AccountPersistencePort {
 
     fun persisNewAccount(accountVo: AccountVO)
     fun retrieveAllMovements(number: String): List<MovementVO>

@@ -1,5 +1,6 @@
-package com.example.demo.boundaries.account.infrastructure
+package com.example.demo.boundaries.account.presentation.exception
 
+import com.example.demo.boundaries.account.domain.exception.AccountNotFoundException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice

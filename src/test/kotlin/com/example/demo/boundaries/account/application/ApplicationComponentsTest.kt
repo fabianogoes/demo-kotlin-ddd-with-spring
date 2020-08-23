@@ -5,24 +5,17 @@ import com.tngtech.archunit.lang.ArchRule
 import com.tngtech.archunit.lang.syntax.ArchRuleDefinition
 import org.junit.jupiter.api.Test
 import org.springframework.stereotype.Service
+import javax.inject.Named
 
 
 class ApplicationComponentsTest : ArchitectureTest() {
 
     @Test
-    fun `classes that reside in package "application" should have "Name" ending with "UseCase"` () {
-        val rule: ArchRule = ArchRuleDefinition.classes()
-                .that().resideInAPackage(APPLICATION_LAYER_PACKAGES)
-                .should().haveSimpleNameContaining("UseCase")
-        rule.check(classes)
-    }
-
-    @Test
     fun `classes that reside in package "application" should be annotated with "Service" stereotype` () {
         val rule: ArchRule = ArchRuleDefinition.classes()
                 .that().resideInAPackage(APPLICATION_LAYER_PACKAGES)
-                .and().haveSimpleNameEndingWith("UseCaseImpl")
-                .should().beAnnotatedWith(Service::class.java)
+                .and().haveSimpleNameEndingWith("UseCaseAdapter")
+                .should().beAnnotatedWith(Named::class.java)
         rule.check(classes)
     }
 
