@@ -3,12 +3,13 @@ package br.com.eprogramar.ebank.account.application
 import br.com.eprogramar.ebank.account.application.port.`in`.SendWithDrawUseCase
 import br.com.eprogramar.ebank.account.application.port.`in`.SendWithDrawValidatorPort
 import br.com.eprogramar.ebank.account.application.port.out.AccountPersistencePort
+import br.com.eprogramar.ebank.account.crosscutting.ActivityType
 import br.com.eprogramar.ebank.account.crosscutting.entity.AccountEntity
-import br.com.eprogramar.ebank.account.crosscutting.entity.ActivityEntity
+import br.com.eprogramar.ebank.account.crosscutting.entity.Activity
 import br.com.eprogramar.ebank.account.crosscutting.request.SendWithDrawRequest
 import br.com.eprogramar.ebank.account.crosscutting.response.SendWithDrawResponse
 import br.com.eprogramar.ebank.account.domain.Account
-import br.com.eprogramar.ebank.account.domain.SendWithDrawAccountNotFoundException
+import br.com.eprogramar.ebank.account.domain.SendDepositAccountNotFoundException
 import javax.inject.Named
 
 @Named
@@ -19,23 +20,19 @@ class SendWithDrawService(
     override fun execute(sendWithDrawRequest: SendWithDrawRequest): SendWithDrawResponse {
         sendWithDrawValidatorPort.validateRulesOfValueToWithDraw(sendWithDrawRequest)
 
-        val entityToWithDraw = accountPersistencePort
+        val accountEntity = accountPersistencePort
                 .retrieveAccountByNumber(sendWithDrawRequest.accountNumber)
-                .orElseThrow { throw SendWithDrawAccountNotFoundException(sendWithDrawRequest.accountNumber) }
+                .orElseThrow { throw SendDepositAccountNotFoundException(sendWithDrawRequest.accountNumber) }
 
-        return Account(accountNumber = entityToWithDraw.accountNumber, balance = entityToWithDraw.balance)
+        return mapToDomain(accountEntity)
                 .doWithDrawAtAccount(sendWithDrawRequest.value)
-                .let { account -> accountPersistencePort.update(
-                        entityToWithDraw.copy(
-                                id = entityToWithDraw.id,
-                                balance = account.balance,
-                                activities = mapToActivityEntity(account, entityToWithDraw)
-                        )
-                ) }.let { entityUpdated -> this.convertEntityToResponse(entityUpdated) }
+                .let { accountDomain -> accountPersistencePort.update(copyEntity(accountEntity, accountDomain)) }
+                .let { entityUpdated -> SendWithDrawResponse(entityUpdated.balance) }
     }
 
-    private fun mapToActivityEntity(accountDomain: Account, accountEntity: AccountEntity) =
-            accountDomain.activities.map { ActivityEntity(account = accountEntity, value = it.value, type = it.type) }.toMutableList()
+    private fun mapToDomain(accountEntity: AccountEntity) =
+            Account(accountNumber = accountEntity.accountNumber, balance = accountEntity.balance, activities = accountEntity.activities)
 
-    private fun convertEntityToResponse(accountEntity: AccountEntity) = SendWithDrawResponse(accountEntity.balance)
+    private fun copyEntity(entityToDeposit: AccountEntity, account: Account) =
+            entityToDeposit.copy(id = entityToDeposit.id, balance = account.balance, activities = account.activities)
 }

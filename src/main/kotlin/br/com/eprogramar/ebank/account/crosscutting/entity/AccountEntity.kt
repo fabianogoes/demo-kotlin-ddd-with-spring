@@ -10,12 +10,11 @@ import javax.persistence.*
 data class AccountEntity(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,
-        @ManyToOne(cascade = [CascadeType.ALL])
-        val person: PersonEntity,
+        val person: Person,
         var balance: BigDecimal,
         val accountNumber: Int,
-        @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-        var activities: MutableList<ActivityEntity> = mutableListOf(),
+        @ElementCollection
+        var activities: MutableList<Activity> = mutableListOf(),
 
         @CreatedDate
         @Temporal(TemporalType.TIMESTAMP)
@@ -24,3 +23,6 @@ data class AccountEntity(
         @Temporal(TemporalType.TIMESTAMP)
         var modifiedAt: Date? = null
 )
+
+@Embeddable
+class Person(var name: String)
