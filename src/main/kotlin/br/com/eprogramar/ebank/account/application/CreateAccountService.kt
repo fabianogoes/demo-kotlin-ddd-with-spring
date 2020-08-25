@@ -4,7 +4,7 @@ import br.com.eprogramar.ebank.account.application.port.`in`.CreateAccountUseCas
 import br.com.eprogramar.ebank.account.application.port.`in`.CreateAccountValidatorPort
 import br.com.eprogramar.ebank.account.application.port.out.AccountPersistencePort
 import br.com.eprogramar.ebank.account.crosscutting.entity.AccountEntity
-import br.com.eprogramar.ebank.account.crosscutting.entity.PersonEntity
+import br.com.eprogramar.ebank.account.crosscutting.entity.Person
 import br.com.eprogramar.ebank.account.crosscutting.request.CreateAccountRequest
 import br.com.eprogramar.ebank.account.crosscutting.response.CreateAccountResponse
 import br.com.eprogramar.ebank.account.domain.Account
@@ -30,7 +30,7 @@ class CreateAccountService(
 
     private fun convertDomainToEntity(account: Account) =
             AccountEntity(
-                person = PersonEntity(name = account.personName!!),
+                person = Person(name = account.personName!!),
                 balance = account.balance,
                 accountNumber = account.accountNumber
             )

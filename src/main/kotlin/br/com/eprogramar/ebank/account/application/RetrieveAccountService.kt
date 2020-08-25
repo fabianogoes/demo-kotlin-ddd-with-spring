@@ -3,7 +3,7 @@ package br.com.eprogramar.ebank.account.application
 import br.com.eprogramar.ebank.account.application.port.`in`.RetrieveAccountUseCase
 import br.com.eprogramar.ebank.account.application.port.out.AccountPersistencePort
 import br.com.eprogramar.ebank.account.crosscutting.entity.AccountEntity
-import br.com.eprogramar.ebank.account.crosscutting.entity.ActivityEntity
+import br.com.eprogramar.ebank.account.crosscutting.entity.Activity
 import br.com.eprogramar.ebank.account.crosscutting.response.ActivityResponse
 import br.com.eprogramar.ebank.account.crosscutting.response.RetrieveAccountResponse
 import br.com.eprogramar.ebank.account.domain.AccountNotFoundException
@@ -30,6 +30,6 @@ class RetrieveAccountService(private val accountPersistencePort: AccountPersiste
                     activities = mapToActivities(entity.activities)
             )
 
-    private fun mapToActivities(activities: MutableList<ActivityEntity>) =
+    private fun mapToActivities(activities: MutableList<Activity>) =
             activities.map { ActivityResponse(value = it.value, type = it.type) }
 }
