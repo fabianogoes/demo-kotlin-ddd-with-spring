@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"person\": \"Fabiano\",\n\t\"amount\": 1.00\n}",
+					"raw": "{\n\t\"personName\": \"Fabiano\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -54,7 +54,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " {\n    \"movementValue\": 100.55\n }",
+					"raw": " {\n    \"accountNumber\": 1,\n    \"value\": 1000.00\n }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -62,17 +62,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/accounts/0000000001/movement/credit",
+					"raw": "http://localhost:8080/accounts",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"accounts",
-						"0000000001",
-						"movement",
-						"credit"
+						"accounts"
 					]
 				}
 			},
@@ -81,7 +78,7 @@
 		{
 			"name": "Create New Movement of Debit",
 			"request": {
-				"method": "PATCH",
+				"method": "DELETE",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -92,7 +89,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " {\n    \"movementValue\": 10.00\n }",
+					"raw": " {\n    \"accountNumber\": 1,\n    \"value\": 10.00\n }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,37 +97,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/accounts/0000000001/movement/debit",
+					"raw": "http://localhost:8080/accounts",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"accounts",
-						"0000000001",
-						"movement",
-						"debit"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Retrieve Account by Numer",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/accounts/0000000001",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"accounts",
-						"0000000001"
+						"accounts"
 					]
 				}
 			},
@@ -150,6 +124,26 @@
 					"port": "8080",
 					"path": [
 						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Account by Number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/accounts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"1"
 					]
 				}
 			},
