@@ -15,7 +15,9 @@
 - Java 8
 - Gradle
 
-See more in [Wiki page](https://github.com/fabianogoes/demo-ddd-kotlin-spring/wiki)
+See more in [Wiki page](https://github.com/fabianogoes/demo-ddd-kotlin-spring/wiki)   
+
+:information_source: See Branches to each approach of the structure: DDD, Hexagonal  
 
 ![Java CI with Gradle](https://github.com/fabianogoes/demo-ddd-kotlin-spring/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
 
